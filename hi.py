@@ -28,10 +28,10 @@ def calculadora():
     print("3. Multiplicación")
     print("4. División")
 
-    opcion = input("Seleccione la operación (1/2/3/4): ")
+    opcion = 1
 
-    num1 = float(input("Ingrese el primer número: "))
-    num2 = float(input("Ingrese el segundo número: "))
+    num1 = 440
+    num2 = 110
 
     if opcion == '1':
         print("Resultado:", suma(num1, num2))
