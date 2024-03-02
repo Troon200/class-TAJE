@@ -1,47 +1,27 @@
-#!/usr/bin/python3
-print('hello word')
-a=2
-b=3
-print(a+b)
-print('El negro es un pato')
+# Importar el módulo http.server para crear el servidor web
+import http.server
+import socketserver
 
-def suma(a, b):
-    return a + b
+# Establecer el puerto en el que se ejecutará el servidor
+PORT = 8000
 
-def resta(a, b):
-    return a - b
+# Clase para manejar las solicitudes HTTP
+class MiHandler(http.server.SimpleHTTPRequestHandler):
+    # Este método se ejecuta cada vez que se recibe una solicitud GET
+    def do_GET(self):
+        # Enviar la respuesta HTTP con el código de estado 200 (OK)
+        self.send_response(200)
+        # Establecer las cabeceras para indicar que el contenido es de tipo HTML
+        self.send_header("Content-type", "text/html")
+        # Finalizar las cabeceras
+        self.end_headers()
+        # Enviar el contenido HTML de respuesta
+        self.wfile.write(b"<html><head><title>Mi servidor web</title></head>")
+        self.wfile.write(b"<body><h1>Hola Mundo!</h1></body></html>")
 
-def multiplicacion(a, b):
-    return a * b
+# Crear el servidor web con el manejador personalizado
+with socketserver.TCPServer(("", PORT), MiHandler) as httpd:
+    print("Servidor activo en el puerto:", PORT)
+    # Esperar y manejar las solicitudes entrantes de manera indefinida
+    httpd.serve_forever()
 
-def division(a, b):
-    if b != 0:
-        return a / b
-    else:
-        return "Error: No se puede dividir entre cero."
-
-def calculadora():
-    print("Bienvenido a la calculadora")
-    print("Operaciones disponibles:")
-    print("1. Suma")
-    print("2. Resta")
-    print("3. Multiplicación")
-    print("4. División")
-
-    opcion = "2"
-
-    num1 = 440
-    num2 = 110
-
-    if opcion == '1':
-        print("Resultado:", suma(num1, num2))
-    elif opcion == '2':
-        print("Resultado:", resta(num1, num2))
-    elif opcion == '3':
-        print("Resultado:", multiplicacion(num1, num2))
-    elif opcion == '4':
-        print("Resultado:", division(num1, num2))
-    else:
-        print("Opción no válida. Por favor, seleccione una operación válida.")
-
-calculadora()
