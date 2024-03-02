@@ -28,7 +28,7 @@ def calculadora():
     print("3. Multiplicación")
     print("4. División")
 
-    opcion = 1
+    opcion = 2
 
     num1 = 440
     num2 = 110
