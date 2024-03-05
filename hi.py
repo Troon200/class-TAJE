@@ -1,2 +1,7 @@
 #!/usr/bin/python3
-print("aragansote2")
+a=print("aragansote2")
+if a=="aragansote2":
+  print("tambien yo")
+else:
+  print("jaja")
+  
