@@ -1,0 +1,6 @@
+sonar.language=php
+sonar.sourceEncoding=UTF-8
+sonar.php.version=7.4
+sonar.php.coverage.reportPath=coverage.xml
+sonar.php.binaries=php,phpunit
+sonar.php.tests.reportPath=phpunit.xml
